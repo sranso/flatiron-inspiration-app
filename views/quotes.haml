@@ -1,0 +1,5 @@
+- @quotes.each do |quote|
+  = quote.body
+  = quote.id
+  - author = Author.find(quote.author_id)
+  %p #{author.lastName}, #{author.firstName}

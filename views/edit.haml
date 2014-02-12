@@ -1,0 +1,7 @@
+= haml :errors, :layout => false
+%form(action="/quotes/#{@quote.id}" method="POST")
+  %input(type="hidden" name="_method" value="PUT")
+  %fieldset
+    %legend Update this quote
+    = haml :form, :layout => false
+  %input(type="submit" value="Update") or <a href="/quotes">Cancel</a>
