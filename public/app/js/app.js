@@ -14,5 +14,8 @@ inspirationApp.config(['$routeProvider',
       when('/quotes/:id', {
         templateUrl: 'app/partials/show-quote.html',
         controller: 'ShowQuoteCtrl'
+      }).
+      when('/quotes/new', {
+        templateUrl: '' //
       });
   }]);

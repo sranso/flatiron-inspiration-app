@@ -1,7 +1,15 @@
-{{quotes}}
-{{authors}}
+<!-- {{quotes}}
+{{authors}} -->
+
+<!-- add query option -->
+<!-- angular route to the form -->
+<input id="search" type="text" ng-model="query"/>
+<select ng-model="orderProp">
+  <option value="body">Body</option>
+  <option value="author">Author</option>
+</select>
 <ul>
-<li ng-repeat="quote in quotes">
-  <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
-</li>
+  <li ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
+    <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
+  </li>
 </ul>
