@@ -1,0 +1,6 @@
+= haml :errors, :layout => false
+%form(action="/quotes" method="POST")
+  %fieldset
+    %legend Add an inspirational quote
+    = haml :form, :layout => false
+  %input(type="submit" value="Create") or <a href="/quotes">Cancel</a>
