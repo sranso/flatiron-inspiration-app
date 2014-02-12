@@ -1,6 +1,6 @@
 'use strict';
 var inspirationApp = angular.module('inspirationApp', [
-  'ngroute',
+  'ngRoute',
   'inspirationControllers'
 ]);
 
@@ -8,7 +8,11 @@ inspirationApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: 'partials/',
-        controller: ''
+        templateUrl: 'app/partials/show-all.html',
+        controller: 'ShowAllCtrl'
+      }).
+      when('/quotes/:id', {
+        templateUrl: 'app/partials/show-quote.html',
+        controller: 'ShowQuoteCtrl'
       });
   }]);

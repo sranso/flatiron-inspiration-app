@@ -50,7 +50,11 @@ class Inspiration < Sinatra::Application
   get '/quotes/:id' do
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
-    haml :show_quote
+    # haml :show_quote
+    results = {}
+    results["quote"] = @quote
+    results["author"] = @author
+    results.to_json
   end
 
   # edit quote + author
@@ -88,7 +92,8 @@ class Inspiration < Sinatra::Application
   # all authors
   get '/authors' do
     @authors = Author.all
-    haml :authors
+    # haml :authors
+    @authors.to_json
   end
 
   # show specific author + quotes

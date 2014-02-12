@@ -2,8 +2,29 @@
 
 var inspirationControllers = angular.module('inspirationControllers', []);
 
-inspirationApp.controller('ShowAllCtrl', ['$scope', 'Spacecat',
-  function($scope, Quote) {
-    $scope.quotes = Quote.query();
+// inspirationApp.controller('ShowAllCtrl', ['$scope', 'Spacecat',
+//   function($scope, Quote) {
 
+//     $scope.quotes = Quote.query();
+
+//   }]);
+
+inspirationControllers.controller('ShowAllCtrl', [
+  '$scope', '$http',  
+  function($scope, $http) {
+    $http.get("/quotes").success(function(response) {
+      $scope.quotes = response;
+    });
+    $http.get("/authors").success(function(response) {
+      $scope.authors = response;
+    });
+  }]);
+
+inspirationControllers.controller('ShowQuoteCtrl', [
+  '$scope', '$routeParams', '$http',  
+  function($scope, $routeParams, $http) {
+    $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
+      $scope.quote = response["quote"];
+      $scope.author = response["author"];
+    });
   }]);
