@@ -16,29 +16,6 @@ inspirationControllers.controller('ShowAllCtrl', [
       $scope.quotes = response;
     });
     
-    // $http.get("/authors").success(function(response) {
-    //   $scope.authors = response;
-    // });
-    
-    $scope.master = {};
-
-    $scope.update = function(quote, author) {
-      $scope.master["quote"] = angular.copy(quote.body);
-      $scope.master["author"] = angular.copy(author.firstName);
-      $scope.master["author"] = angular.copy(author.lastName);
-      $http({
-        url: "/quotes",
-        method: "POST",
-        data: $scope.master
-      });
-    };
-
-    $scope.reset = function() {
-      $scope.quote = angular.copy($scope.master);
-      $scope.author = angular.copy($scope.master);
-    };
-
-    $scope.reset();
   }]);
 
 inspirationControllers.controller('ShowQuoteCtrl', [

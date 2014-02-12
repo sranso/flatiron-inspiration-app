@@ -37,7 +37,8 @@ class Inspiration < Sinatra::Application
 
   # create new quote + author
   post '/quotes' do
-    @quote = Quote.create(params)
+    @quote = Quote.create(:body => params[:body])
+    @author = Author.create(params[:author])
     redirect '/'
     # @quote = Quote.create(params["quote"])
     # @author = Author.create(params["author"])
