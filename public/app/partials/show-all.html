@@ -14,7 +14,22 @@
     <a href="#/authors/{{author.id}}">{{quote.author.firstName}}, {{quote.author.lastName}}</a>
   </li>
 </ul>
-<form novalidate class="simple-form">
+
+<h3>New Quote</h3>
+<form method="POST" action="http://localhost:9393/quotes">
+  <div>
+    <label for="body">Body</label>
+    <input type="text" name="body"/>
+  </div>
+  <div>
+    <label for="user_id">User ID</label>
+    <input type="text" name="user_id"/>
+  </div>
+
+  <button type="submit">Register New Quote</button>
+</form>
+
+<!-- <form novalidate class="simple-form">
   Body: <input type="text" ng-model="quote.body">
   Author, First name: <input type="text" ng-model="author.firstName">
   Author, Last name: <input type="text" ng-model="author.lastName">
@@ -23,4 +38,4 @@
 </form>
 <pre>form = {{quote | json}}</pre>
 <pre>form = {{author | json}}</pre>
-<pre>master = {{master | json}}</pre>
+<pre>master = {{master | json}}</pre> -->

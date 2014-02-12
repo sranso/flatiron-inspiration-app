@@ -20,8 +20,7 @@ inspirationControllers.controller('ShowAllCtrl', [
     //   $scope.authors = response;
     // });
     
-    $scope.master = {
-    };
+    $scope.master = {};
 
     $scope.update = function(quote, author) {
       $scope.master["quote"] = angular.copy(quote.body);

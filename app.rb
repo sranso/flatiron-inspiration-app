@@ -37,17 +37,18 @@ class Inspiration < Sinatra::Application
 
   # create new quote + author
   post '/quotes' do
-    puts params
-    @quote = Quote.create(params["quote"])
-    @author = Author.create(params["author"])
-    @quote.update_attributes("author_id" => @author.id)
-    if @quote.save && @author.save
-      status 201
-      redirect '/quotes/' + @quote.id.to_s
-    else
-      status 400
-      haml :new
-    end
+    @quote = Quote.create(params)
+    redirect '/'
+    # @quote = Quote.create(params["quote"])
+    # @author = Author.create(params["author"])
+    # @quote.update_attributes("author_id" => @author.id)
+    # if @quote.save && @author.save
+    #   status 201
+    #   redirect '/quotes/' + @quote.id.to_s
+    # else
+    #   status 400
+    #   haml :new
+    # end
   end
 
   # show specific quote + author
