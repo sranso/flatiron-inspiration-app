@@ -1,6 +1,7 @@
-- if @quote.errors.any? || @author.errors.any?
-  %ul#errors
-  - @quote.errors.each do |error|
-    %li= error
-  - @author.errors.each do |error|
-    %li= error
+- if @quote
+  - if @quote.errors.any? || @author.errors.any?
+    %ul#errors
+    - @quote.errors.each do |error|
+      %li= error
+    - @author.errors.each do |error|
+      %li= error

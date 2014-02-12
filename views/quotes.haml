@@ -1,5 +1,7 @@
+%h1 All Quotes
 - @quotes.each do |quote|
-  = quote.body
-  = quote.id
   - author = Author.find(quote.author_id)
-  %p #{author.lastName}, #{author.firstName}
+  %p
+    <a href="/quotes/#{quote.id}">#{quote.body}</a>
+    by <a href="/author/#{author.id}">#{author.lastName}, #{author.firstName}</a>
+<a href="/quotes/new">Add New Quote</a>

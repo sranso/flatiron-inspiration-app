@@ -44,18 +44,18 @@ class Inspiration < Sinatra::Application
     end
   end
 
-  # show specific quote
+  # show specific quote + author
   get '/quotes/:id' do
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
-    haml :show
+    haml :show_quote
   end
 
   # edit quote + author
   get '/quotes/edit/:id' do
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
-    haml :edit
+    haml :edit_quote
   end
 
   # update quote + author
@@ -67,14 +67,39 @@ class Inspiration < Sinatra::Application
       redirect '/quotes/' + params[:id]
     else
       status 400
-      haml :edit
+      haml :edit_quote
     end
   end
 
-  # delete quote
+  # delete quote confirmation
   get '/quotes/delete/:id' do
     @quote = Quote.find(params[:id])
+    @author = Author.find(@quote.author_id)
     haml :delete
+  end
+
+  delete '/quotes/:id' do
+    Quote.find(params[:id]).destroy
+    redirect '/quotes'
+  end
+
+  # all authors
+  get '/authors' do
+    @authors = Author.all
+    haml :authors
+  end
+
+  # show specific author + quotes
+  get '/authors/:id' do
+    @author = Author.find(params[:id])
+    @quotes = Quote.where(:author_id => @author.id)
+    haml :show_author
+  end
+
+  # edit specific author
+  get '/authors/edit/:id' do
+    @author = Author.find(params[:id])
+    haml :edit_author
   end
 end
 

@@ -1,0 +1,8 @@
+%p Quote:
+<a href="/quotes/#{@quote.id}">#{@quote.body}</a>
+%p Author:
+<a href="/authors/#{@author.id}">#{@author.lastName}, #{@author.firstName}</a>
+%p
+<a href="/quotes">All Quotes</a>
+<a href="/quotes/edit/#{@quote.id}">Edit This Quote</a>
+<a href="/quotes/delete/#{@quote.id}">Delete This Quote</a>

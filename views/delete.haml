@@ -1,0 +1,4 @@
+%h3 Are you sure you want to delete "#{@quote.body}" by #{@author.lastName}, #{@author.firstName}?
+%form(action="/quotes/#{@quote.id}" method="post")
+  %input(type="hidden" name="_method" value="DELETE")
+  %input(type="submit" value="Delete") or <a href="/quotes">Cancel</a>
