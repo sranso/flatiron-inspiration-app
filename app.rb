@@ -22,7 +22,10 @@ class Inspiration < Sinatra::Application
   get '/quotes' do
     @quotes = Quote.all
     # haml :quotes
-    @quotes.to_json
+    @quotes.to_json(:only => [:id, :body],
+                    :include => {
+                      :author => {
+                        :only => [:id, :firstName, :lastName]}})
   end
 
   # add new quote + author
@@ -34,10 +37,11 @@ class Inspiration < Sinatra::Application
 
   # create new quote + author
   post '/quotes' do
+    puts params
     @quote = Quote.create(params["quote"])
     @author = Author.create(params["author"])
     @quote.update_attributes("author_id" => @author.id)
-    if @quote.save
+    if @quote.save && @author.save
       status 201
       redirect '/quotes/' + @quote.id.to_s
     else

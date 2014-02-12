@@ -11,5 +11,16 @@
 <ul>
   <li ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
     <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
+    <a href="#/authors/{{author.id}}">{{quote.author.firstName}}, {{quote.author.lastName}}</a>
   </li>
 </ul>
+<form novalidate class="simple-form">
+  Body: <input type="text" ng-model="quote.body">
+  Author, First name: <input type="text" ng-model="author.firstName">
+  Author, Last name: <input type="text" ng-model="author.lastName">
+  <button ng-click="reset()">Reset</button>
+  <button ng-click="update(quote, author)">Save</button>
+</form>
+<pre>form = {{quote | json}}</pre>
+<pre>form = {{author | json}}</pre>
+<pre>master = {{master | json}}</pre>
