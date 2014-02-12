@@ -2,13 +2,6 @@
 
 var inspirationControllers = angular.module('inspirationControllers', []);
 
-// inspirationApp.controller('ShowAllCtrl', [
-//   '$scope', 'Quote',
-//   function($scope, Quote) {
-//     $scope.quotes = Quote.query();
-//     $scope.orderProp = 'body';
-//   }]);
-
 inspirationControllers.controller('ShowAllCtrl', [
   '$scope', '$http',  
   function($scope, $http) {
@@ -24,5 +17,14 @@ inspirationControllers.controller('ShowQuoteCtrl', [
     $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
       $scope.quote = response["quote"];
       $scope.author = response["author"];
+    });
+  }]);
+
+inspirationControllers.controller('ShowAuthorCtrl', [
+  '$scope', '$routeParams', '$http',  
+  function($scope, $routeParams, $http) {
+    $http.get("/authors/" + $routeParams.id + ".json").success(function(response) {
+      $scope.author = response["author"];
+      $scope.quotes = response["quotes"];
     });
   }]);

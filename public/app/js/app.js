@@ -15,7 +15,11 @@ inspirationApp.config(['$routeProvider',
         templateUrl: 'app/partials/show-quote.html',
         controller: 'ShowQuoteCtrl'
       }).
-      when('/quotes/new', {
-        templateUrl: '' //
+      when('/authors/:id', {
+        templateUrl: 'app/partials/show-author.html',
+        controller: 'ShowAuthorCtrl'
+      }).
+      otherwise({
+        redirectTo: '/'
       });
   }]);

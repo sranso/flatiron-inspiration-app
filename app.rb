@@ -39,10 +39,8 @@ class Inspiration < Sinatra::Application
   post '/quotes' do
     @quote = Quote.create(:body => params[:body])
     @author = Author.create(params[:author])
+    @quote.update_attributes("author_id" => @author.id)
     redirect '/'
-    # @quote = Quote.create(params["quote"])
-    # @author = Author.create(params["author"])
-    # @quote.update_attributes("author_id" => @author.id)
     # if @quote.save && @author.save
     #   status 201
     #   redirect '/quotes/' + @quote.id.to_s
@@ -71,7 +69,7 @@ class Inspiration < Sinatra::Application
   end
 
   # update quote + author
-  put 'quotes/edit/:id' do
+  put '/quotes/edit/:id' do
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
     if @quote.update(params["quote"]) && @author.update(params["author"])
@@ -106,7 +104,11 @@ class Inspiration < Sinatra::Application
   get '/authors/:id' do
     @author = Author.find(params[:id])
     @quotes = Quote.where(:author_id => @author.id)
-    haml :show_author
+    # haml :show_author
+    results = {}
+    results["author"] = @author
+    results["quotes"] = @quotes
+    results.to_json
   end
 
   # edit specific author
