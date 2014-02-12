@@ -14,13 +14,15 @@ class Inspiration < Sinatra::Application
     @users = User.all
     @authors = Author.all
     @quotes = Quote.all
-    haml :index
+    # haml :index
+    File.read(File.join('public/app', 'index.html'))
   end
 
   # all quotes
   get '/quotes' do
     @quotes = Quote.all
-    haml :quotes
+    # haml :quotes
+    @quotes.to_json
   end
 
   # add new quote + author
