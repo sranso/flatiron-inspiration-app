@@ -28,3 +28,12 @@ inspirationControllers.controller('ShowAuthorCtrl', [
       $scope.quotes = response["quotes"];
     });
   }]);
+
+inspirationControllers.controller('ShowAuthorsCtrl', [
+  '$scope', '$http',
+  function($scope, $http) {
+    $http.get("/authors").success(function(response) {
+      $scope.authors = response;
+      console.log(response);
+    })
+  }]);

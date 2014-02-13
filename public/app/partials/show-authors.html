@@ -1,0 +1,7 @@
+<label>Search</label>
+<input id="search" type="text" ng-model="query"/>
+<ul>
+  <li ng-repeat="author in authors | filter:query">
+    <a href="#/authors/{{author.id}}">{{author.lastName}}, {{author.firstName}}</a>
+  </li>
+</ul>

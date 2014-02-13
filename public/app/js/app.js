@@ -7,7 +7,7 @@ var inspirationApp = angular.module('inspirationApp', [
 inspirationApp.config(['$routeProvider', 
   function($routeProvider) {
     $routeProvider.
-      when('/', {
+      when('/quotes', {
         templateUrl: 'app/partials/show-all.html',
         controller: 'ShowAllCtrl'
       }).
@@ -15,11 +15,15 @@ inspirationApp.config(['$routeProvider',
         templateUrl: 'app/partials/show-quote.html',
         controller: 'ShowQuoteCtrl'
       }).
+      when('/authors', {
+        templateUrl: 'app/partials/show-authors.html',
+        controller: 'ShowAuthorsCtrl'
+      }).
       when('/authors/:id', {
         templateUrl: 'app/partials/show-author.html',
         controller: 'ShowAuthorCtrl'
       }).
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/quotes'
       });
   }]);
