@@ -26,7 +26,7 @@
 </div>
 
 <!-- HOW DO I HIDE THIS? B/C IT'S ALSO .NG-SCOPE, IT'S ACTING FUNNY I THINK.. -->
-<div class="new-quote-form">
+<div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
   <form method="POST" action="http://localhost:9393/quotes">
     <div>
@@ -46,11 +46,6 @@
   </form>
 </div>
 
-<!-- WHY DOESN'T THIS WORK -->
 <script type="text/javascript">
-  $(".new-quote-link").on("click", function(event) {
-    // event.preventDefault();
-    console.log("this??");
-    $(".new-quote-form").toggle("slow");
-  });
+
 </script>

@@ -9,6 +9,15 @@ inspirationControllers.controller('ShowAllCtrl', [
       $scope.quotes = response;
     });
     
+    $.noConflict();
+    jQuery(document).ready(function($) {
+      $(".new-quote-link").on("click", function(event) {
+        // event.preventDefault();
+        console.log("this??");
+        // $(this)
+        $(".new-quote-form").toggle("slow");
+      });
+    });
   }]);
 
 inspirationControllers.controller('ShowQuoteCtrl', [
