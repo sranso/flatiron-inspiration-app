@@ -8,16 +8,18 @@ inspirationControllers.controller('ShowAllCtrl', [
     $http.get("/quotes").success(function(response) {
       $scope.quotes = response;
     });
+
+  $scope.showLayer = function() {
+    angular.element(".layer").removeClass("ng-hide");
+    angular.element(".new-quote-form").removeClass("ng-hide");
+  }
+
+  // do i need this? tbd
+  $scope.hideForm = function() {
+    angular.element(".layer").addClass("ng-hide");
+    angular.element(".new-quote-form").addClass("ng-hide");
+  }
     
-    $.noConflict();
-    jQuery(document).ready(function($) {
-      $(".new-quote-link").on("click", function(event) {
-        // event.preventDefault();
-        console.log("this??");
-        // $(this)
-        $(".new-quote-form").toggle("slow");
-      });
-    });
   }]);
 
 inspirationControllers.controller('ShowQuoteCtrl', [

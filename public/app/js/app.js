@@ -1,4 +1,5 @@
 'use strict';
+
 var inspirationApp = angular.module('inspirationApp', [
   'ngRoute',
   'inspirationControllers'

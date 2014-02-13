@@ -1,10 +1,15 @@
 <!-- TO DO:
-1. see comments / questions below
-2. fix authors that are actually books.. add comments?
+1. add comments?
+2. fix authors that are actually books..
 3. add font options and color choices
 4. add order by in authors
-5. why is layout being weird (see height)
-6. set boxes to float up rather than sitting on a line together -->
+6. set boxes to float up rather than sitting on a line together
+7. integrate with gmail 
+8. allow user to pick from pre-existing author 
+9. add flash messages -->
+
+<div class="layer ng-hide" ng-click="hideForm()">
+</div>
 
 <div>
   <label>Search</label>
@@ -14,8 +19,7 @@
     <option value="body">Body</option>
     <option value="author">Author:</option>
   </select>
-  <button class="new-quote-link">Add New Quote</button>
-  <!-- <a class="new-quote-link" href="#">Add New Quote</a> -->
+  <button class="new-quote-btn" ng-click="showLayer()">Add New Quote</button>
 </div>
 
 <div class="line"></div>
@@ -25,14 +29,12 @@
   by <a href="#/authors/{{author.id}}">{{quote.author.firstName}}, {{quote.author.lastName}}</a>
 </div>
 
-<!-- HOW DO I HIDE THIS? B/C IT'S ALSO .NG-SCOPE, IT'S ACTING FUNNY I THINK.. -->
 <div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
   <form method="POST" action="http://localhost:9393/quotes">
     <div>
       <label for="body">Body</label>
-      <!-- HOW DO I MAKE THIS MUCH BIGGER? DO I HAVE TO USE CSS? -->
-      <input type="text" name="body"/>
+      <textarea rows="4" cols="50" name="body"></textarea>
     </div>
     <div>
       <label>Author</label>
@@ -40,12 +42,8 @@
       <input type="text" name="author[firstName]"/>
 
       <label for="author[lastName]">Last</label>
-      <input type="text" name="author[lastName]"/>
+      <input type="textarea" name="author[lastName]"/>
     </div>
-    <button type="submit">Register New Quote</button>
+    <button type="submit" ng-click="hideForm()">Register New Quote</button>
   </form>
 </div>
-
-<script type="text/javascript">
-
-</script>
