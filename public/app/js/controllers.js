@@ -9,26 +9,60 @@ inspirationControllers.controller('ShowAllCtrl', [
       $scope.quotes = response;
     });
 
-  $scope.showLayer = function() {
-    angular.element(".layer").removeClass("ng-hide");
-    angular.element(".new-quote-form").removeClass("ng-hide");
-  }
+    $http.get("/authors").success(function(response) {
+      $scope.firstNames = [];
+      $scope.lastNames = [];
+      for (var i = 0; i < response.length; i++) {
+        $scope.firstNames.push(response[i].firstName);
+        $scope.lastNames.push(response[i].lastName);
+      };
+    });
 
-  // do i need this? tbd
-  $scope.hideForm = function() {
-    angular.element(".layer").addClass("ng-hide");
-    angular.element(".new-quote-form").addClass("ng-hide");
-  }
+    $scope.showLayer = function() {
+      angular.element(".layer").removeClass("ng-hide");
+      angular.element(".new-quote-form").removeClass("ng-hide");
+    }
+
+    // do i need this? tbd
+    $scope.hideForm = function() {
+      angular.element(".layer").addClass("ng-hide");
+      angular.element(".new-quote-form").addClass("ng-hide");
+    }
+
+    $scope.populate = function(e) {
+      // can't find any siblings!? don't know what $(this) is?!
+      // debugger
+    }
+
+    $scope.submit = function() {
+      // don't know how to 'send post request' (but not) to save the data..
+      // looking at ng-submit
+      // debugger
+      // alert($(this).text());
+    }
     
   }]);
 
 inspirationControllers.controller('ShowQuoteCtrl', [
-  '$scope', '$routeParams', '$http',  
+  '$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
     $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
       $scope.quote = response["quote"];
       $scope.author = response["author"];
     });
+
+    $scope.deleteForm = function() {
+      // $("a").preventDefault();
+      angular.element(".layer").removeClass("ng-hide");
+      angular.element(".delete-form").removeClass("ng-hide");
+    }
+
+    // do i need this? tbd
+    $scope.hideForm = function() {
+      angular.element(".layer").addClass("ng-hide");
+      angular.element(".delete-form").addClass("ng-hide");
+    }
+
   }]);
 
 inspirationControllers.controller('ShowAuthorCtrl', [
@@ -45,6 +79,7 @@ inspirationControllers.controller('ShowAuthorsCtrl', [
   function($scope, $http) {
     $http.get("/authors").success(function(response) {
       $scope.authors = response;
-      console.log(response);
-    })
+    });
+
+    $scope.orderProp = 'A-Z';
   }]);

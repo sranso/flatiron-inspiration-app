@@ -1,7 +1,16 @@
-<label>Search</label>
-<input id="search" type="text" ng-model="query"/>
+<h3>All Authors</h3>
+
+<div>
+  <label>Search</label>
+  <input id="search" type="text" ng-model="query"/>
+  <label>Sort by</label>
+  <select ng-model="orderProp">
+    <option value="firstName">First Name</option>
+    <option value="lastName">Last Name</option>
+  </select>
+</div>
 <ul>
-  <li ng-repeat="author in authors | filter:query">
+  <li ng-repeat="author in authors | filter:query | orderBy:orderProp">
     <a href="#/authors/{{author.id}}">{{author.lastName}}, {{author.firstName}}</a>
   </li>
 </ul>

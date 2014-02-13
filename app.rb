@@ -88,7 +88,9 @@ class Inspiration < Sinatra::Application
     haml :delete
   end
 
+  # delete
   delete '/quotes/:id' do
+    debugger
     Quote.find(params[:id]).destroy
     redirect '/quotes'
   end

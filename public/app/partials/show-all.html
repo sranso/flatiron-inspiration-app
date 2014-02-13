@@ -6,7 +6,10 @@
 6. set boxes to float up rather than sitting on a line together
 7. integrate with gmail 
 8. allow user to pick from pre-existing author 
-9. add flash messages -->
+9. add flash messages
+10. make new quote form stay on same page -->
+
+<h3>All Quotes</h3>
 
 <div class="layer ng-hide" ng-click="hideForm()">
 </div>
@@ -17,7 +20,7 @@
   <label>Sort by</label>
   <select ng-model="orderProp">
     <option value="body">Body</option>
-    <option value="author">Author:</option>
+    <option value="author">Author</option>
   </select>
   <button class="new-quote-btn" ng-click="showLayer()">Add New Quote</button>
 </div>
@@ -32,18 +35,23 @@
 <div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
   <form method="POST" action="http://localhost:9393/quotes">
+  <!-- this isn't working.... -->
+  <!-- <form ng-submit="submit()"> -->
     <div>
       <label for="body">Body</label>
-      <textarea rows="4" cols="50" name="body"></textarea>
+      <textarea rows="4" cols="60" name="body" placeholder="To improve is to change..."></textarea>
     </div>
     <div>
       <label>Author</label>
       <label for="author[firstName]">First</label>
-      <input type="text" name="author[firstName]"/>
+      <input type="text" name="author[firstName]" placeholder="Winston" ng-model="inputfirst"/>
+      <li ng-repeat="firstName in firstNames | filter:inputfirst" ng-click="populate(e)">{{firstName}}</li>
 
       <label for="author[lastName]">Last</label>
-      <input type="textarea" name="author[lastName]"/>
+      <input type="textarea" name="author[lastName]" placeholder="Churchill" ng-model="inputlast"/>
+      <li ng-repeat="lastName in lastNames | filter:inputlast" ng-click="populate()">{{lastName}}</li>
     </div>
-    <button type="submit" ng-click="hideForm()">Register New Quote</button>
+    <!-- <input type="submit" value="Add Quote"> -->
+    <button type="submit" ng-click="hideForm()">Add Quote</button>
   </form>
 </div>
