@@ -1,3 +1,11 @@
+<!-- TO DO:
+1. see comments / questions below
+2. fix authors that are actually books.. add comments?
+3. add font options and color choices
+4. add order by in authors
+5. why is layout being weird (see height)
+6. set boxes to float up rather than sitting on a line together -->
+
 <div>
   <label>Search</label>
   <input id="search" type="text" ng-model="query"/>
@@ -6,7 +14,8 @@
     <option value="body">Body</option>
     <option value="author">Author:</option>
   </select>
-  <a class="new-quote-link" href="#">Add New Quote</a>
+  <button class="new-quote-link">Add New Quote</button>
+  <!-- <a class="new-quote-link" href="#">Add New Quote</a> -->
 </div>
 
 <div class="line"></div>
@@ -16,13 +25,14 @@
   by <a href="#/authors/{{author.id}}">{{quote.author.firstName}}, {{quote.author.lastName}}</a>
 </div>
 
-<!-- HOW DO I HIDE THIS? B/C IT'S ALSO NG-SCOPE IT'S ACTING FUNNY I THINK.. -->
+<!-- HOW DO I HIDE THIS? B/C IT'S ALSO .NG-SCOPE, IT'S ACTING FUNNY I THINK.. -->
 <div class="new-quote-form">
   <h3>New Quote</h3>
   <form method="POST" action="http://localhost:9393/quotes">
     <div>
       <label for="body">Body</label>
-      <input type="textarea" name="body"/>
+      <!-- HOW DO I MAKE THIS MUCH BIGGER? DO I HAVE TO USE CSS? -->
+      <input type="text" name="body"/>
     </div>
     <div>
       <label>Author</label>
@@ -38,8 +48,8 @@
 
 <!-- WHY DOESN'T THIS WORK -->
 <script type="text/javascript">
-  $(".new-quote-link").click(function(event) {
-    event.preventDefault();
+  $(".new-quote-link").on("click", function(event) {
+    // event.preventDefault();
     console.log("this??");
     $(".new-quote-form").toggle("slow");
   });

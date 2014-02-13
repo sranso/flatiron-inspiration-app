@@ -1,6 +1,17 @@
 body {
   background-color: rgba(113,178,206,0.5);
 }
+.layer {
+  background-color: rgba(211,49,73,0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  /*WHY ISN'T THIS WORKING*/
+  z-index: 1;
+}
 .header {
   background-color: rgba(255,255,255,0.5);
 }
@@ -17,13 +28,23 @@ header {
   padding: 0px;
 }
 .quote {
-  border: ;
   background-color: white;
   padding: 15px;
   margin: 10px;
   display: inline-block;
   max-width: 300px;
+  position: relative;
+  z-index: 10;
 }
 .new-quote-form.ng-scope {
   display: hidden;
+  background-color: white;
+  padding: 15px;
+  /*THIS TOO*/
+  position: absolute;
+  z-index: 1000;
+}
+h3 {
+  margin: 0px 0px 10px 0px;
+  text-align: center;
 }

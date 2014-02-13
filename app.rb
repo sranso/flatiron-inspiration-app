@@ -84,7 +84,7 @@ class Inspiration < Sinatra::Application
   # delete quote confirmation
   get '/quotes/delete/:id' do
     @quote = Quote.find(params[:id])
-    @author = Author.find(@quote.author_id)
+    @author = Author.find(@quote.author_id) if @quote.author_id != nil
     haml :delete
   end
 
