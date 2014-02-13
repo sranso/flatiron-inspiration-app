@@ -1,0 +1,29 @@
+body {
+  background-color: rgba(113,178,206,0.5);
+}
+.header {
+  background-color: rgba(255,255,255,0.5);
+}
+header {
+  display: inline-block;
+  padding: 0 10px;
+}
+.ng-scope {
+  padding: 10px;
+}
+.line {
+  background-color: rgba(25,25,25,0.2);
+  height: 1px;
+  padding: 0px;
+}
+.quote {
+  border: ;
+  background-color: white;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  max-width: 300px;
+}
+.new-quote-form.ng-scope {
+  display: hidden;
+}
