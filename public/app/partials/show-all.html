@@ -14,21 +14,21 @@
 </div>
 
 <div>
-  <label>Search</label>
+  <label class="add-margin">Search</label>
   <input id="search" type="text" ng-model="query"/>
-  <label>Sort by</label>
+  <label class="add-margin">Sort by</label>
   <select ng-model="orderProp">
     <option value="body">Body</option>
     <option value="author">Author</option>
   </select>
-  <button class="new-quote-btn" ng-click="showLayer()">Add New Quote</button>
+  <button class="new-quote-btn add-margin" ng-click="showLayer()">Add New Quote</button>
 </div>
 
 <div class="line"></div>
 
 <div class="quote" ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
-  <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
-  by <a href="#/authors/{{author.id}}">{{quote.author.firstName}}, {{quote.author.lastName}}</a>
+  <a class="quote-in-quote" href="#/quotes/{{quote.id}}">{{quote.body}}</a>
+  <p class="author-in-quote"><a href="#/authors/{{author.id}}">{{quote.author.lastName}}, {{quote.author.firstName}}</a></p>
 </div>
 
 <div class="new-quote-form ng-hide">
@@ -38,10 +38,12 @@
   <!-- <form ng-submit="submit()"> -->
     <div>
       <label for="body">Body</label>
-      <textarea rows="4" cols="60" name="body" placeholder="To improve is to change..."></textarea>
+      <br>
+      <textarea rows="4" cols="70" name="body" placeholder="To improve is to change..."></textarea>
     </div>
     <div>
       <label>Author</label>
+      <br>
       <label for="author[firstName]">First</label>
       <input type="text" name="author[firstName]" placeholder="Winston" ng-model="inputfirst"/>
       <li ng-repeat="firstName in firstNames | filter:inputfirst" ng-click="populate(e)">{{firstName}}</li>
@@ -51,6 +53,7 @@
       <li ng-repeat="lastName in lastNames | filter:inputlast" ng-click="populate()">{{lastName}}</li>
     </div>
     <!-- <input type="submit" value="Add Quote"> -->
+    <button type="submit" ng-click="hideForm()">Cancel</button>
     <button type="submit" ng-click="hideForm()">Add Quote</button>
   </form>
 </div>

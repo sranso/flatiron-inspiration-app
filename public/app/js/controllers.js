@@ -58,7 +58,14 @@ inspirationControllers.controller('ShowQuoteCtrl', [
     }
 
     // do i need this? tbd
-    $scope.hideForm = function() {
+    $scope.hideForm = function(e) {
+
+      $(this).preventDefault(e);
+      // $(this).on('click', function(e) {
+      //   debugger
+      //   e.preventDefault();
+      // });
+      $("button").preventDefault(e);
       angular.element(".layer").addClass("ng-hide");
       angular.element(".delete-form").addClass("ng-hide");
     }
