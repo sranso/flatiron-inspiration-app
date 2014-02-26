@@ -27,7 +27,6 @@ header > * {
   top: 0;
   left: 0;
   bottom: 0;
-  /*WHY ISN'T THIS WORKING*/
   z-index: 1;
 }
 .header {
@@ -35,10 +34,6 @@ header > * {
 }
 li {
   list-style-type: none;
-}
-header {
-  display: inline-block;
-  padding: 0 10px;
 }
 .ng-scope {
   padding: 10px;
@@ -60,6 +55,12 @@ header {
 }
 .add-margin {
   margin-left: 15px;
+}
+.form-button, .form-link {
+  float: right;
+}
+textarea {
+  width: 100%;
 }
 .new-quote-form.ng-scope, .delete-form.ng-scope {
   display: hidden;
