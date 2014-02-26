@@ -52,17 +52,14 @@ inspirationControllers.controller('ShowQuoteCtrl', [
     });
 
     $scope.deleteForm = function() {
-      // $("a").preventDefault();
       angular.element(".layer").removeClass("ng-hide");
       angular.element(".delete-form").removeClass("ng-hide");
     }
 
-    // do i need this? tbd
-    $scope.hideForm = function(e) {
-      $(this).preventDefault(e);
-      e.preventDefault();
-      angular.element(".layer").addClass("ng-hide");
-      angular.element(".delete-form").addClass("ng-hide");
+    $scope.sendDelete = function() {
+      $http.delete("/quotes/" + $routeParams.id), {
+        url: '/#/quotes'
+      }
     }
 
   }]);
