@@ -12,6 +12,12 @@ header > * {
   display: inline-block;
   margin-left: 15px;
 }
+header a {
+  font-size: 18px;
+}
+.header {
+  background-color: rgba(255,255,255,0.5);
+}
 .author-in-quote {
   padding-top: 10px;
   text-align: right;
@@ -28,9 +34,6 @@ header > * {
   left: 0;
   bottom: 0;
   z-index: 1;
-}
-.header {
-  background-color: rgba(255,255,255,0.5);
 }
 li {
   list-style-type: none;
@@ -52,6 +55,20 @@ li {
   position: relative;
   z-index: 0;
   border-radius: 10px;
+}
+.featured-quote {
+  background-color: white;
+  padding: 15px;
+  margin: 10px;
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+.featured-quote p:first-child {
+  font-size: 19px;
+}
+.featured-quote p:nth-child(2) {
+  text-align: right;
 }
 .add-margin {
   margin-left: 15px;
@@ -75,4 +92,11 @@ textarea {
 h3 {
   margin: 0px 0px 10px 0px;
   text-align: center;
+}
+.form-wrapper {
+  margin: 0 auto;
+}
+.center-edit-delete {
+  width: 150px;
+  margin: 0 auto;
 }

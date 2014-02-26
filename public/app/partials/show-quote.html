@@ -1,22 +1,24 @@
 <div class="layer ng-hide" ng-click="hideForm()">
 </div>
 
-<div class="quote">
+<div class="featured-quote">
   <p>{{quote.body}}</p>
   <p>by <a href="#/authors/{{author.id}}">{{author.lastName}}, {{author.firstName}}</a></p>
 </div>
-<div>
+<div class="center-edit-delete">
   <a href="#/quotes/edit/{{quote.id}}">Edit</a>
-  <button ng-click="deleteForm()">Delete</button>
+  <button class="add-margin" ng-click="deleteForm()">Delete</button>
   <!-- <a href="#" ng-click="deleteForm()">Delete</a> -->
 </div>
 
 
 <div class="delete-form ng-hide">
-  <!-- need to make {{quote.id}}} its value and a string.. -->
+  <!-- {{quote.id}}} is being interpreted literally.. why? -->
   <form method="DELETE" action="http://localhost:9393/quotes/{{quote.id}}">
-    <p>Are you sure you want to delete this quote?</p>
-    <a href="#" ng-click="hideForm()">Cancel</a>
-    <button type="submit" ng-click="hideForm()">Yes</button>
+    <div class="form-wrapper">
+      <p>Are you sure you want to delete this quote?</p>
+      <a href="#" ng-click="hideForm()">Cancel</a>
+      <button class="add-margin" type="submit" ng-click="hideForm()">Yes</button>
+    </div>
   </form>
 </div>

@@ -1,1 +1,17 @@
-<p>yooo</p>
+<form action="/quotes/#{@quote.id}" method="POST">
+  <input type="hidden" name="_method" value="put">
+  <fieldset>
+    <legend>Update this quote</legend>
+    <label for="quote">Quote:</label>
+    <textarea rows="4" cols="70" name="body" name="quote[body]" placeholder="{{quote.body}}"></textarea>
+
+    <label for="author">First Name:</label>
+    <input type="text" name="author[firstName]" placeholder="{{author.firstName}}">
+    <label for="author">Last Name:</label>
+    <input type="text" name="author[lastName]" placeholder="{{author.lastName}}">
+  </fieldset>
+  <input type="submit" value="Update">
+  <a href="/#">Cancel</a>
+</form>
+ <!--    = haml :form_quotes, :layout => false
+  %input(type="submit" value="Update") or <a href="/quotes">Cancel</a> -->
