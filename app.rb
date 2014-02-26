@@ -12,7 +12,7 @@ class Inspiration < Sinatra::Application
   end
 
   configure :production do
-    db = URI.parse( || 'postgres:///localhost/')
+    db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
     ActiveRecord::Base.establish_connection(
       :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
       :host => db.host,
