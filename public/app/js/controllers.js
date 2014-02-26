@@ -67,6 +67,26 @@ inspirationControllers.controller('ShowQuoteCtrl', [
 
   }]);
 
+inspirationControllers.controller('EditQuoteCtrl', [
+  '$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
+      $scope.quote = response["quote"];
+      $scope.author = response["author"];
+    });
+
+  }]);
+
+inspirationControllers.controller('DeleteQuoteCtrl', [
+  '$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
+      $scope.quote = response["quote"];
+      $scope.author = response["author"];
+    });
+
+  }]);
+
 inspirationControllers.controller('ShowAuthorCtrl', [
   '$scope', '$routeParams', '$http',  
   function($scope, $routeParams, $http) {
@@ -84,4 +104,13 @@ inspirationControllers.controller('ShowAuthorsCtrl', [
     });
 
     $scope.orderProp = 'A-Z';
+  }]);
+
+inspirationControllers.controller('EditAuthorCtrl', [
+  '$scope', '$routeParams', '$http',  
+  function($scope, $routeParams, $http) {
+    $http.get("/authors/" + $routeParams.id + ".json").success(function(response) {
+      $scope.author = response["author"];
+      $scope.quotes = response["quotes"];
+    });
   }]);

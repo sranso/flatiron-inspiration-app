@@ -1,12 +1,13 @@
 require 'bundler'
 Bundler.require;
-
 require 'sinatra/activerecord'
+
 Dir.glob('./lib/*.rb') do |model|
   require model
 end
 
 class Inspiration < Sinatra::Application
+
   configure :development do
     set :database, 'sqlite3:///database.db'
   end

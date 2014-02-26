@@ -16,6 +16,14 @@ inspirationApp.config(['$routeProvider',
         templateUrl: 'app/partials/show-quote.html',
         controller: 'ShowQuoteCtrl'
       }).
+      when('/quotes/edit/:id', {
+        templateUrl: 'app/partials/edit-quote.html',
+        controller: 'EditQuoteCtrl'
+      }).
+      when('/quotes/delete/:id', {
+        templateUrl: 'app/partials/delete-quote.html',
+        controller: 'DeleteQuoteCtrl'
+      }).
       when('/authors', {
         templateUrl: 'app/partials/show-authors.html',
         controller: 'ShowAuthorsCtrl'
@@ -23,6 +31,10 @@ inspirationApp.config(['$routeProvider',
       when('/authors/:id', {
         templateUrl: 'app/partials/show-author.html',
         controller: 'ShowAuthorCtrl'
+      }).
+      when('/authors/edit/:id', {
+        templateUrl: 'app/partials/edit-author.html',
+        controller: 'EditAuthorCtrl'
       }).
       otherwise({
         redirectTo: '/quotes'
