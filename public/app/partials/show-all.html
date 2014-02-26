@@ -46,15 +46,15 @@
       <br>
       <label for="author[firstName]">First</label>
       <input type="text" name="author[firstName]" placeholder="Winston" ng-model="inputfirst"/>
-      <li ng-repeat="firstName in firstNames | filter:inputfirst" ng-click="populate(e)">{{firstName}}</li>
+      <!-- <li ng-repeat="firstName in firstNames | filter:inputfirst" ng-click="populate(e)">{{firstName}}</li> -->
 
       <label for="author[lastName]">Last</label>
       <input type="textarea" name="author[lastName]" placeholder="Churchill" ng-model="inputlast"/>
-      <li ng-repeat="lastName in lastNames | filter:inputlast" ng-click="populate()">{{lastName}}</li>
+      <!-- <li ng-repeat="lastName in lastNames | filter:inputlast" ng-click="populate()">{{lastName}}</li> -->
     </div>
     <!-- <input type="submit" value="Add Quote"> -->
     <!-- don't need to add {{}} when passing to funciton..?? -->
-    <a href="#" ng-click="hideForm()">Cancel</button>
+    <a href="#" ng-click="hideForm()">Cancel</a>
     <button type="submit" ng-click="hideForm()">Add Quote</button>
   </form>
 </div>
