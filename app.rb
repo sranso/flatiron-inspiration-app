@@ -106,7 +106,9 @@ class Inspiration < Sinatra::Application
   # delete
   delete '/quotes/:id' do
     Quote.find(params[:id]).destroy
-    File.read(File.join('public/app', 'index.html'))
+    # File.read(File.join('public/app', 'index.html'))
+    puts "hi????"
+    redirect to("/#/quotes")
   end
 
   # all authors
