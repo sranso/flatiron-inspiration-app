@@ -11,4 +11,5 @@ group :development do
   gem 'shotgun'
   gem 'tux'
   gem 'debugger'
+  gem 'sqlite3'
 end

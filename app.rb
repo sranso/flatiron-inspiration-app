@@ -7,6 +7,7 @@ Dir.glob('./lib/*.rb') do |model|
 end
 
 class Inspiration < Sinatra::Application
+  set :database, "sqlite3:///database.db"
 
   # show everything
   get '/' do
