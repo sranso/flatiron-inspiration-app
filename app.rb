@@ -52,6 +52,8 @@ class Inspiration < Sinatra::Application
 
   # create new quote + author
   post '/quotes' do
+    puts "YES I'M HERE"
+    puts params
     @quote = Quote.create(:body => params[:body])
     @author = Author.create(params[:author])
     @quote.update_attributes("author_id" => @author.id)
@@ -106,9 +108,7 @@ class Inspiration < Sinatra::Application
   # delete
   delete '/quotes/:id' do
     Quote.find(params[:id]).destroy
-    # File.read(File.join('public/app', 'index.html'))
-    puts "hi????"
-    redirect to("/#/quotes")
+    redirect '/'
   end
 
   # all authors

@@ -35,20 +35,37 @@ inspirationControllers.controller('ShowAllCtrl', [
     }
 
     $scope.submit = function() {
-      // don't know how to 'send post request' (but not) to save the data..
-      // looking at ng-submit
-      // debugger
-      // alert($(this).text());
+      // $http({
+      //   method: 'POST',
+      //   url: '/quotes',
+      //   data: 
+      // })
+      $http.post("/quotes").success(function(response) {
+        $http.get("/authors").success(function(response) {
+          for (var i = 0; i < response.length; i++) {
+            console.log("hiii");
+            $scope.firstNames.push(response[i].firstName);
+            $scope.lastNames.push(response[i].lastName);
+          };
+        });
+        $http.get("/quotes").success(function(response) {
+          $scope.quotes = response;
+          console.log($scope.quotes);
+        });
+      });
     }
     
   }]);
 
 inspirationControllers.controller('ShowQuoteCtrl', [
-  '$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+  '$scope', '$routeParams', '$http', '$location',
+  function($scope, $routeParams, $http, $location) {
     $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
       $scope.quote = response["quote"];
       $scope.author = response["author"];
+    }).error( function(response){
+      alert("you can't go here!")
+      redirectTo: '/quotes'
     });
 
     $scope.deleteForm = function() {
@@ -57,9 +74,9 @@ inspirationControllers.controller('ShowQuoteCtrl', [
     }
 
     $scope.sendDelete = function() {
-      $http.delete("/quotes/" + $routeParams.id), {
-        url: '/#/quotes'
-      }
+      $http.delete("/quotes/" + $routeParams.id).success(function(response) {
+        $location.path("/quotes");
+      })
     }
 
   }]);
