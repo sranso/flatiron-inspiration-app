@@ -49,7 +49,7 @@
         <input ng-model="newItem.author.lastName" type="textarea" name="author[lastName]" placeholder="Churchill"/>
       </div>
       <p></p>
-      <button class="add-margin form-button" type="submit" id="submit" value="submit" ng-click="submit(newItem); newItem = {}">Add Quote</button>
+      <button class="add-margin form-button" type="submit" id="submit" value="submit" ng-click="submit(newItem); hideForm()">Add Quote</button>
       <a class="form-link" href="#" ng-click="hideForm()">Cancel</a>
     </div>
   </form>
