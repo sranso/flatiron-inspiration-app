@@ -1,17 +1,17 @@
-<form action="/quotes/#{@quote.id}" method="POST">
-<!-- <form > -->
+<form>
   <input type="hidden" name="_method" value="put">
   <fieldset>
     <legend>Update this quote</legend>
     <label for="quote">Quote:</label>
-    <textarea rows="4" cols="70" name="body" name="quote[body]" placeholder="{{quote.body}}"></textarea>
+    <textarea ng-model="item.body" rows="4" cols="70">{{quote.body}}</textarea>
 
     <label for="author">First Name:</label>
-    <input type="text" name="author[firstName]" placeholder="{{author.firstName}}">
+    <input ng-model="item.author.firstName" type="text" value="{{author.firstName}}">
     <label for="author">Last Name:</label>
-    <input type="text" name="author[lastName]" placeholder="{{author.lastName}}">
+    <input ng-model="item.author.lastName" type="text" value="{{author.lastName}}">
   </fieldset>
-  <input type="submit" value="Update" class="add-margin form-button">
+
+  <input type="submit" value="Update" class="add-margin form-button" ng-click="updateQuote(item)">
   <a href="/#" class="form-link">Cancel</a>
 </form>
  <!--    = haml :form_quotes, :layout => false

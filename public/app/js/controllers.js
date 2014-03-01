@@ -24,7 +24,6 @@ inspirationControllers.controller('ShowAllCtrl', [
       angular.element(".new-quote-form").removeClass("ng-hide");
     }
 
-    // do i need this? tbd
     $scope.hideForm = function() {
       angular.element(".layer").addClass("ng-hide");
       angular.element(".new-quote-form").addClass("ng-hide");
@@ -71,12 +70,18 @@ inspirationControllers.controller('ShowQuoteCtrl', [
   }]);
 
 inspirationControllers.controller('EditQuoteCtrl', [
-  '$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+  '$scope', '$routeParams', '$http', '$location',
+  function($scope, $routeParams, $http, $location) {
     $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
       $scope.quote = response["quote"];
       $scope.author = response["author"];
     });
+
+    $scope.updateQuote = function(item) {
+      $http.put("/quotes/edit/" + $routeParams.id, item).success(function() {
+        $location.path("/quotes/" + $routeParams.id);
+      });
+    }
 
   }]);
 

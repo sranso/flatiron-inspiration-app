@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require;
 require 'sinatra/activerecord'
+require 'debugger'
 
 Dir.glob('./lib/*.rb') do |model|
   require model
@@ -52,11 +53,11 @@ class Inspiration < Sinatra::Application
   end
 
   # add new quote + author
-  get '/quotes/new' do
-    @author = Author.new
-    @quote = Quote.new
-    haml :new
-  end
+  # get '/quotes/new' do
+  #   @author = Author.new
+  #   @quote = Quote.new
+  #   haml :new
+  # end
 
   # create new quote + author
   post '/quotes' do
@@ -82,32 +83,37 @@ class Inspiration < Sinatra::Application
     results.to_json
   end
 
-  # edit quote + author
-  get '/quotes/edit/:id' do
-    @quote = Quote.find(params[:id])
-    @author = Author.find(@quote.author_id)
-    haml :edit_quote
-  end
+  # # edit quote + author
+  # get '/quotes/edit/:id' do
+  #   @quote = Quote.find(params[:id])
+  #   @author = Author.find(@quote.author_id)
+  #   haml :edit_quote
+  # end
 
   # update quote + author
   put '/quotes/edit/:id' do
+    begin
+      params.merge! JSON.parse(request.env["rack.input"].read)
+    rescue JSON::ParserError
+      logger.error "Cannot parse request body."
+    end
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
-    if @quote.update(params["quote"]) && @author.update(params["author"])
+    if @quote.update(:body => params[:body]) && @author.update(params[:author])
       status 201
-      redirect '/quotes/' + params[:id]
+      redirect '/'
     else
       status 400
-      haml :edit_quote
+      reload
     end
   end
 
   # delete quote confirmation
-  get '/quotes/delete/:id' do
-    @quote = Quote.find(params[:id])
-    @author = Author.find(@quote.author_id) if @quote.author_id != nil
-    haml :delete
-  end
+  # get '/quotes/delete/:id' do
+  #   @quote = Quote.find(params[:id])
+  #   @author = Author.find(@quote.author_id) if @quote.author_id != nil
+  #   haml :delete
+  # end
 
   # delete
   delete '/quotes/:id' do
@@ -139,9 +145,3 @@ class Inspiration < Sinatra::Application
     haml :edit_author
   end
 end
-
-# TO DO
-# 1. pre-populate the edit form
-# 2. make quote input box bigger
-# 3. allow user to style their quote (what color should this quote have, font, etc)
-# 4. add angular so you can easily filter

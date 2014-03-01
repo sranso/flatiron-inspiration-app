@@ -38,18 +38,18 @@
       <div>
         <label for="body">Body</label>
         <br>
-        <textarea ng-model="newItem.body" name="body" rows="4" cols="70" placeholder="To improve is to change..."></textarea>
+        <textarea ng-model="newItem.body" rows="4" cols="70" placeholder="To improve is to change..."></textarea>
       </div>
       <div>
         <label>Author</label>
         <br>
-        <label for="author[firstName]">First</label>
-        <input ng-model="newItem.author.firstName" type="text" name="author[firstName]" placeholder="Winston"/>
-        <label class="add-margin" for="author[lastName]">Last</label>
-        <input ng-model="newItem.author.lastName" type="textarea" name="author[lastName]" placeholder="Churchill"/>
+        <label>First</label>
+        <input ng-model="newItem.author.firstName" type="text" placeholder="Winston"/>
+        <label class="add-margin">Last</label>
+        <input ng-model="newItem.author.lastName" type="text" placeholder="Churchill"/>
       </div>
       <p></p>
-      <button class="add-margin form-button" type="submit" id="submit" value="submit" ng-click="submit(newItem); hideForm()">Add Quote</button>
+      <button class="add-margin form-button" type="submit" ng-click="submit(newItem); hideForm()">Add Quote</button>
       <a class="form-link" href="#" ng-click="hideForm()">Cancel</a>
     </div>
   </form>
