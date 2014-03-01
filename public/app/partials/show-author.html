@@ -1,3 +1,6 @@
+<div class="layer ng-hide" ng-click="hideForm()">
+</div>
+
 <h3>{{author.lastName}}, {{author.firstName}}</h3>
 <div class="quote" ng-repeat="quote in quotes">
   <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
@@ -6,4 +9,14 @@
 <div class="center-edit-delete">
   <a href="#/authors/edit/{{author.id}}">Edit</a>
   <button class="add-margin" ng-click="deleteForm()">Delete</button>
+</div>
+
+<div class="delete-form ng-hide">
+  <form ng-submit="sendDelete()">
+    <div class="form-wrapper">
+      <p>Are you sure you want to delete this author? You will also delete the author's quotes.</p>
+      <a href="#" ng-click="hideForm()">Cancel</a>
+      <button class="add-margin" type="submit">Yes</button>
+    </div>
+  </form>
 </div>

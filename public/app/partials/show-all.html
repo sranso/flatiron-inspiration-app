@@ -2,11 +2,9 @@
 1. add comments?
 2. fix authors that are actually books..
 3. add font options and color choices
-6. set boxes to float up rather than sitting on a line together
 7. integrate with gmail 
 8. allow user to pick from pre-existing author 
-9. add flash messages
-10. make new quote form stay on same page -->
+9. add flash messages -->
 
 <h3>Quotes</h3>
 
@@ -28,7 +26,7 @@
 
 <div class="quote" ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
   <a class="quote-in-quote" href="#/quotes/{{quote.id}}">{{quote.body}}</a>
-  <p class="author-in-quote"><a href="#/authors/{{author.id}}">{{quote.author.lastName}}, {{quote.author.firstName}}</a></p>
+  <p class="author-in-quote"><a href="#/authors/{{quote.author.id}}">{{quote.author.lastName}}, {{quote.author.firstName}}</a></p>
 </div>
 
 <div class="new-quote-form ng-hide">

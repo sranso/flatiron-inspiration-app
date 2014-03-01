@@ -38,26 +38,17 @@ class Inspiration < Sinatra::Application
     @users = User.all
     @authors = Author.all
     @quotes = Quote.all
-    # haml :index
     File.read(File.join('public/app', 'index.html'))
   end
 
   # all quotes
   get '/quotes' do
     @quotes = Quote.all
-    # haml :quotes
     @quotes.to_json(:only => [:id, :body],
                     :include => {
                       :author => {
                         :only => [:id, :firstName, :lastName]}})
   end
-
-  # add new quote + author
-  # get '/quotes/new' do
-  #   @author = Author.new
-  #   @quote = Quote.new
-  #   haml :new
-  # end
 
   # create new quote + author
   post '/quotes' do
@@ -76,21 +67,12 @@ class Inspiration < Sinatra::Application
   get '/quotes/:id' do
     @quote = Quote.find(params[:id])
     @author = Author.find(@quote.author_id)
-    # haml :show_quote
     results = {}
     results["quote"] = @quote
     results["author"] = @author
     results.to_json
   end
 
-  # # edit quote + author
-  # get '/quotes/edit/:id' do
-  #   @quote = Quote.find(params[:id])
-  #   @author = Author.find(@quote.author_id)
-  #   haml :edit_quote
-  # end
-
-  # update quote + author
   put '/quotes/edit/:id' do
     begin
       params.merge! JSON.parse(request.env["rack.input"].read)
@@ -124,7 +106,6 @@ class Inspiration < Sinatra::Application
   # all authors
   get '/authors' do
     @authors = Author.all
-    # haml :authors
     @authors.to_json
   end
 
@@ -139,9 +120,14 @@ class Inspiration < Sinatra::Application
     results.to_json
   end
 
-  # edit specific author
-  get '/authors/edit/:id' do
+  delete '/authors/:id' do
     @author = Author.find(params[:id])
-    haml :edit_author
+    @quotes = Quote.where(:author_id => @author.id).all
+    @quotes.each do |quote|
+      quote.destroy
+    end
+    @author.destroy
+    redirect '/'
   end
+
 end

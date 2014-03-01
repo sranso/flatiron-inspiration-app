@@ -20,10 +20,6 @@ inspirationApp.config(['$routeProvider',
         templateUrl: 'app/partials/edit-quote.html',
         controller: 'EditQuoteCtrl'
       }).
-      when('/quotes/delete/:id', {
-        templateUrl: 'app/partials/delete-quote.html',
-        controller: 'DeleteQuoteCtrl'
-      }).
       when('/authors', {
         templateUrl: 'app/partials/show-authors.html',
         controller: 'ShowAuthorsCtrl'

@@ -53,12 +53,19 @@ inspirationControllers.controller('ShowQuoteCtrl', [
       $scope.author = response["author"];
     }).error( function(response){
       alert("you can't go here!")
-      redirectTo: '/quotes'
+      $location.path("/quotes");
     });
 
     $scope.deleteForm = function() {
       angular.element(".layer").removeClass("ng-hide");
       angular.element(".delete-form").removeClass("ng-hide");
+    }
+
+    $scope.hideForm = function() {
+      // this doesn't work...
+      $route.reload();
+      angular.element(".layer").addClass("ng-hide");
+      // angular.element(".new-quote-form").addClass("ng-hide");
     }
 
     $scope.sendDelete = function() {
@@ -85,23 +92,31 @@ inspirationControllers.controller('EditQuoteCtrl', [
 
   }]);
 
-inspirationControllers.controller('DeleteQuoteCtrl', [
-  '$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
-    $http.get("/quotes/" + $routeParams.id + ".json").success(function(response) {
-      $scope.quote = response["quote"];
-      $scope.author = response["author"];
-    });
-
-  }]);
-
 inspirationControllers.controller('ShowAuthorCtrl', [
-  '$scope', '$routeParams', '$http',  
-  function($scope, $routeParams, $http) {
+  '$scope', '$routeParams', '$http', '$location', 
+  function($scope, $routeParams, $http, $location) {
     $http.get("/authors/" + $routeParams.id + ".json").success(function(response) {
       $scope.author = response["author"];
       $scope.quotes = response["quotes"];
     });
+
+    $scope.deleteForm = function() {
+      angular.element(".layer").removeClass("ng-hide");
+      angular.element(".delete-form").removeClass("ng-hide");
+    }
+
+    $scope.hideForm = function() {
+      // this doesn't work...
+      $route.reload();
+      angular.element(".layer").addClass("ng-hide");
+      // angular.element(".new-quote-form").addClass("ng-hide");
+    }
+
+    $scope.sendDelete = function() {
+      $http.delete("/authors/" + $routeParams.id).success(function(success) {
+        $location.path("/authors");
+      })
+    }
   }]);
 
 inspirationControllers.controller('ShowAuthorsCtrl', [
