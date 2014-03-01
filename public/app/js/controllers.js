@@ -130,10 +130,16 @@ inspirationControllers.controller('ShowAuthorsCtrl', [
   }]);
 
 inspirationControllers.controller('EditAuthorCtrl', [
-  '$scope', '$routeParams', '$http',  
-  function($scope, $routeParams, $http) {
+  '$scope', '$routeParams', '$http', '$location',  
+  function($scope, $routeParams, $http, $location) {
     $http.get("/authors/" + $routeParams.id + ".json").success(function(response) {
       $scope.author = response["author"];
       $scope.quotes = response["quotes"];
     });
+
+    $scope.updateAuthor = function(item) {
+      $http.put("/authors/edit/" + $routeParams.id, item).success(function() {
+        $location.path("/authors/" + $routeParams.id);
+      });
+    }
   }]);

@@ -1,1 +1,15 @@
-<p>yes? edit author</p>
+<form>
+  <input type="hidden" name="_method" value="put">
+  <fieldset>
+    <p>{{author}}</p>
+    <legend>Update the author {{author.lastName}}, {{author.firstName}}</legend>
+
+    <label for="author">First Name:</label>
+    <input ng-model="item.author.firstName" type="text" value="{{author.firstName}}">
+    <label for="author">Last Name:</label>
+    <input ng-model="item.author.lastName" type="text" value="{{author.lastName}}">
+
+    <input type="submit" value="Update" class="add-margin form-button" ng-click="updateAuthor(item)">
+    <a href="/#" class="form-link">Cancel</a>
+  </fieldset>
+</form>

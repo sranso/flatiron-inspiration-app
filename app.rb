@@ -73,6 +73,7 @@ class Inspiration < Sinatra::Application
     results.to_json
   end
 
+  # edit quote and author
   put '/quotes/edit/:id' do
     begin
       params.merge! JSON.parse(request.env["rack.input"].read)
@@ -90,13 +91,6 @@ class Inspiration < Sinatra::Application
     end
   end
 
-  # delete quote confirmation
-  # get '/quotes/delete/:id' do
-  #   @quote = Quote.find(params[:id])
-  #   @author = Author.find(@quote.author_id) if @quote.author_id != nil
-  #   haml :delete
-  # end
-
   # delete
   delete '/quotes/:id' do
     Quote.find(params[:id]).destroy
@@ -113,13 +107,30 @@ class Inspiration < Sinatra::Application
   get '/authors/:id' do
     @author = Author.find(params[:id])
     @quotes = Quote.where(:author_id => @author.id)
-    # haml :show_author
     results = {}
     results["author"] = @author
     results["quotes"] = @quotes
     results.to_json
   end
 
+  # edit author
+  put '/authors/edit/:id' do
+    begin
+      params.merge! JSON.parse(request.env["rack.input"].read)
+    rescue JSON::ParserError
+      logger.error "Cannot parse request body."
+    end
+    @author = Author.find(params[:id])
+    if @author.update(params[:author])
+      status 201
+      redirect '/'
+    else
+      status 400
+      reload
+    end
+  end
+
+  # delete an author and all their quotes
   delete '/authors/:id' do
     @author = Author.find(params[:id])
     @quotes = Quote.where(:author_id => @author.id).all
