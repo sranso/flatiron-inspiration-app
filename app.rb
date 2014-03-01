@@ -13,18 +13,6 @@ class Inspiration < Sinatra::Application
   end
 
   configure :production do
-    set :database, 'pg:///database.db'
-  end
-
-  before do
-    headers 'Access-Control-Allow-Origin' => '*', 
-            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST'],
-            'Access-Control-Allow-Headers' => 'Content-Type' 
-  end
-
-  set :protection, false
-
-  configure :production do
     db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
     ActiveRecord::Base.establish_connection(
       :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
@@ -35,6 +23,14 @@ class Inspiration < Sinatra::Application
       :encoding => 'utf8'
     )
   end
+
+  before do
+  headers 'Access-Control-Allow-Origin' => '*', 
+          'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST'],
+          'Access-Control-Allow-Headers' => 'Content-Type' 
+  end
+
+  set :protection, false
 
   # show everything
   get '/' do
