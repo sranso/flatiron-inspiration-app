@@ -57,7 +57,6 @@ class Inspiration < Sinatra::Application
     rescue JSON::ParserError
       logger.error "Cannot parse request body."
     end
-    # debugger
     @author = Author.find_or_create_by(params[:author]) # find or create by
     @author.quotes.build(:body => params[:body])
     @author.save!
