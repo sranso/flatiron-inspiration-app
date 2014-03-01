@@ -1,7 +1,6 @@
 require 'bundler'
 Bundler.require;
 require 'sinatra/activerecord'
-require 'debugger'
 
 Dir.glob('./lib/*.rb') do |model|
   require model
