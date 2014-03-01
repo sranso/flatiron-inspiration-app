@@ -12,6 +12,10 @@ class Inspiration < Sinatra::Application
     set :database, 'sqlite3:///database.db'
   end
 
+  configure :production do
+    set :database, 'pg:///database.db'
+  end
+
   before do
     headers 'Access-Control-Allow-Origin' => '*', 
             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST'],
