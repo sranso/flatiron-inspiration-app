@@ -1,10 +1,10 @@
-Author.create!(
-  "id" => 1,
-  "firstName" => "Blaise",
-  "lastName" => "Pascal")
-Quote.create!(
-  "body" => "The heart has its reasons, which reason does not know. We feel it in a thousand things.",
-  "author_id" => 1)
+# Author.create!(
+#   "id" => 1,
+#   "firstName" => "Blaise",
+#   "lastName" => "Pascal")
+# Quote.create!(
+#   "body" => "The heart has its reasons, which reason does not know. We feel it in a thousand things.",
+#   "author_id" => 1)
 Author.create!(
   "id" => 2,
   "firstName" => "Janos",
