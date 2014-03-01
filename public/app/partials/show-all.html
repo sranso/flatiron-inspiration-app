@@ -33,30 +33,23 @@
 
 <div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
-  <form method="POST" action="http://localhost:9393/quotes">
-  <!-- this isn't working.... -->
-  <!-- <form ng-submit="submit()"> -->
+  <form>
     <div class="form-wrapper">
       <div>
         <label for="body">Body</label>
         <br>
-        <textarea rows="4" cols="70" name="body" placeholder="To improve is to change..."></textarea>
+        <textarea ng-model="newItem.body" name="body" rows="4" cols="70" placeholder="To improve is to change..."></textarea>
       </div>
       <div>
         <label>Author</label>
         <br>
         <label for="author[firstName]">First</label>
-        <input type="text" name="author[firstName]" placeholder="Winston" ng-model="inputfirst"/>
-        <!-- <li ng-repeat="firstName in firstNames | filter:inputfirst" ng-click="populate(e)">{{firstName}}</li> -->
-
+        <input ng-model="newItem.author.firstName" type="text" name="author[firstName]" placeholder="Winston"/>
         <label class="add-margin" for="author[lastName]">Last</label>
-        <input type="textarea" name="author[lastName]" placeholder="Churchill" ng-model="inputlast"/>
-        <!-- <li ng-repeat="lastName in lastNames | filter:inputlast" ng-click="populate()">{{lastName}}</li> -->
+        <input ng-model="newItem.author.lastName" type="textarea" name="author[lastName]" placeholder="Churchill"/>
       </div>
-      <!-- <input type="submit" value="Add Quote"> -->
-      <!-- don't need to add {{}} when passing to funciton..?? -->
       <p></p>
-      <button class="add-margin form-button" type="submit" ng-click="hideForm()">Add Quote</button>
+      <button class="add-margin form-button" type="submit" id="submit" value="submit" ng-click="submit(newItem); newItem = {}">Add Quote</button>
       <a class="form-link" href="#" ng-click="hideForm()">Cancel</a>
     </div>
   </form>

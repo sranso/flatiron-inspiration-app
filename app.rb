@@ -12,6 +12,14 @@ class Inspiration < Sinatra::Application
     set :database, 'sqlite3:///database.db'
   end
 
+  before do
+    headers 'Access-Control-Allow-Origin' => '*', 
+            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST'],
+            'Access-Control-Allow-Headers' => 'Content-Type' 
+  end
+
+  set :protection, false
+
   configure :production do
     db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
     ActiveRecord::Base.establish_connection(
@@ -52,19 +60,15 @@ class Inspiration < Sinatra::Application
 
   # create new quote + author
   post '/quotes' do
-    puts "YES I'M HERE"
-    puts params
+    begin
+      params.merge! JSON.parse(request.env["rack.input"].read)
+    rescue JSON::ParserError
+      logger.error "Cannot parse request body."
+    end
     @quote = Quote.create(:body => params[:body])
     @author = Author.create(params[:author])
     @quote.update_attributes("author_id" => @author.id)
     redirect '/'
-    # if @quote.save && @author.save
-    #   status 201
-    #   redirect '/quotes/' + @quote.id.to_s
-    # else
-    #   status 400
-    #   haml :new
-    # end
   end
 
   # show specific quote + author

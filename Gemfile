@@ -6,6 +6,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'haml'
 gem 'rack-flash3'
+gem 'json'
 
 group :development do
   gem 'shotgun'

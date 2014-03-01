@@ -1,4 +1,5 @@
 <form action="/quotes/#{@quote.id}" method="POST">
+<!-- <form > -->
   <input type="hidden" name="_method" value="put">
   <fieldset>
     <legend>Update this quote</legend>
@@ -10,8 +11,8 @@
     <label for="author">Last Name:</label>
     <input type="text" name="author[lastName]" placeholder="{{author.lastName}}">
   </fieldset>
-  <input type="submit" value="Update">
-  <a href="/#">Cancel</a>
+  <input type="submit" value="Update" class="add-margin form-button">
+  <a href="/#" class="form-link">Cancel</a>
 </form>
  <!--    = haml :form_quotes, :layout => false
-  %input(type="submit" value="Update") or <a href="/quotes">Cancel</a> -->
+  %input(type="submit" value="Update") or <a href="/quotes">Cancel</a>
