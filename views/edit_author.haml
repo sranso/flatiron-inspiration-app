@@ -1,7 +1,0 @@
-= haml :errors, :layout => false
-%form(action="/authors/#{@author.id}" method="POST")
-  %input(type="hidden" name="_method" value="PUT")
-  %fieldset
-    %legend Update this author
-    = haml :form_authors, :layout => false
-  %input(type="submit" value="Update") or <a href="/authors">Cancel</a>
