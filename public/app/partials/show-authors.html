@@ -12,6 +12,6 @@
 <div class="line"></div>
 <ul>
   <li ng-repeat="author in authors | filter:query | orderBy:orderProp">
-    <a href="#/authors/{{author.id}}">{{author.lastName}}, {{author.firstName}}</a>
+    <a href="#/authors/{{author.id}}" class="author-in-authors">{{author.lastName}}, {{author.firstName}}</a>
   </li>
 </ul>
