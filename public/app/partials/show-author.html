@@ -1,6 +1,7 @@
 <div class="layer ng-hide" ng-click="hideForm()">
 </div>
 
+<h3>{{author.lastName}}, {{author.firstName}}</h3>
 <div class="quote" ng-repeat="quote in quotes">
   <a href="#/quotes/{{quote.id}}">{{quote.body}}</a>
 </div>
