@@ -1,15 +1,30 @@
 <h3>Authors</h3>
 
-<div>
-  <label>Search</label>
-  <input id="search" type="text" ng-model="query"/>
-  <label>Sort by</label>
-  <select ng-model="orderProp">
-    <option value="firstName">First Name</option>
-    <option value="lastName">Last Name</option>
-  </select>
+<div class="row">
+  <div class="small-8">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Search</label>
+      </div>
+      <div class="small-9 columns">
+        <input id="search" type="text" ng-model="query" placeholder=""/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Sort by</label>
+      </div>
+      <div class="small-9 columns">
+        <select ng-model="orderProp">
+          <option value="body">Body</option>
+          <option value="author">Author</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="line"></div>
+
 <ul class="inline-list">
   <li ng-repeat="author in authors | filter:query | orderBy:orderProp">
     <a href="#/authors/{{author.id}}" class="author-in-authors">{{author.lastName}}, {{author.firstName}}</a>
