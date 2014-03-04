@@ -10,17 +10,36 @@
 <div class="layer ng-hide" ng-click="hideForm()">
 </div>
 
-<div>
-  <h4 class="subheader">Search
-  <!-- <label class="add-margin">Search</label> -->
-</h3>
-  <input id="search" type="text" ng-model="query"/>
-  <label class="add-margin">Sort by</label>
-  <select ng-model="orderProp">
-    <option value="body">Body</option>
-    <option value="author">Author</option>
-  </select>
-  <button class="new-quote-btn add-margin" ng-click="showLayer()">Add New Quote</button>
+<div class="row">
+  <div class="small-8">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Search</label>
+      </div>
+      <div class="small-9 columns">
+        <input id="search" type="text" ng-model="query" placeholder=""/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Sort by</label>
+      </div>
+      <div class="small-9 columns">
+        <select ng-model="orderProp">
+          <option value="body">Body</option>
+          <option value="author">Author</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="small-2 columns"></div>
+        <div class="small-4 columns">
+          <a class="button postfix" ng-click="showLayer()">Add New Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="line"></div>
@@ -35,23 +54,30 @@
 <div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
   <form>
-    <div class="form-wrapper">
-      <div>
-        <label for="body">Body</label>
-        <br>
-        <textarea ng-model="newItem.body" rows="4" cols="70" placeholder="To improve is to change..."></textarea>
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="body">Body
+          <br>
+          <textarea ng-model="newItem.body" rows="4" cols="70" placeholder="To improve is to change..."></textarea>
+        </label>
       </div>
-      <div>
-        <label>Author</label>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
         <br>
-        <label>First</label>
+        <label>Author First Name</label>
         <input ng-model="newItem.author.firstName" type="text" placeholder="Winston"/>
-        <label>Last</label>
+        <label>Author Last Name</label>
         <input ng-model="newItem.author.lastName" type="text" placeholder="Churchill"/>
       </div>
+    </div>
       <p></p>
-      <button class="add-margin form-button" type="submit" ng-click="submit(newItem); hideForm()">Add Quote</button>
-      <a class="form-link" href="#" ng-click="hideForm()">Cancel</a>
+      <div class="small-4 columns">
+        <a class="button postfix" href="#" ng-click="hideForm()">Cancel</a>
+      </div>
+      <div class="small-4 columns">
+        <a class="button postfix" ng-click="submit(newItem); hideForm()">Add Quote</a>
+      </div>
     </div>
   </form>
 </div>

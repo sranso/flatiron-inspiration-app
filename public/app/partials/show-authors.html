@@ -1,16 +1,16 @@
 <h3>Authors</h3>
 
 <div>
-  <label class="add-margin">Search</label>
+  <label>Search</label>
   <input id="search" type="text" ng-model="query"/>
-  <label class="add-margin">Sort by</label>
+  <label>Sort by</label>
   <select ng-model="orderProp">
     <option value="firstName">First Name</option>
     <option value="lastName">Last Name</option>
   </select>
 </div>
 <div class="line"></div>
-<ul>
+<ul class="inline-list">
   <li ng-repeat="author in authors | filter:query | orderBy:orderProp">
     <a href="#/authors/{{author.id}}" class="author-in-authors">{{author.lastName}}, {{author.firstName}}</a>
   </li>

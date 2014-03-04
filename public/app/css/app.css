@@ -1,5 +1,6 @@
 body {
   background-color: rgba(113,178,206,0.5);
+  /*background-image: url('../img/bigwave.jpg');*/
   font-family: 'Source Sans Pro', sans-serif;
 }
 html, body {
@@ -21,6 +22,13 @@ header a {
 }
 .header {
   background-color: rgba(255,255,255,0.5);
+}
+.large-4.columns.center {
+  margin: 0 auto;
+  /*display: inline-block;*/
+}
+.center {
+  /*margin-left: 18%;*/
 }
 .author-in-quote {
   padding-top: 10px;
@@ -89,8 +97,11 @@ li {
 .add-margin {
   margin-left: 15px;
 }
-.form-button, .form-link {
+.form-link {
   float: right;
+}
+.cc {
+  margin: 0 auto;
 }
 textarea {
   width: 100%;
