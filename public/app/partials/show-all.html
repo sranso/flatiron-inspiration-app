@@ -11,7 +11,9 @@
 </div>
 
 <div>
-  <label class="add-margin">Search</label>
+  <h4 class="subheader">Search
+  <!-- <label class="add-margin">Search</label> -->
+</h3>
   <input id="search" type="text" ng-model="query"/>
   <label class="add-margin">Sort by</label>
   <select ng-model="orderProp">
@@ -23,10 +25,12 @@
 
 <div class="line"></div>
 
-<div class="quote" ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
-  <a class="quote-in-quote" href="#/quotes/{{quote.id}}">{{quote.body}}</a>
-  <p class="author-in-quote"><a href="#/authors/{{quote.author.id}}">{{quote.author.lastName}}, {{quote.author.firstName}}</a></p>
-</div>
+<a href="#/quotes/{{quote.id}}" class="quote" ng-repeat="quote in quotes | filter:query | orderBy:orderProp">
+  <p class="quote-in-quote">{{quote.body}}</p>
+  <p class="author-in-quote">
+    {{quote.author.lastName}}, {{quote.author.firstName}}
+  </p>
+</a>
 
 <div class="new-quote-form ng-hide">
   <h3>New Quote</h3>
