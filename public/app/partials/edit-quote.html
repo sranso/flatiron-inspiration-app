@@ -1,6 +1,6 @@
 <form>
   <input type="hidden" name="_method" value="put">
-  <fieldset>
+  <!-- <fieldset> -->
     <legend>Update this quote</legend>
     <label for="quote">Quote:</label>
     <textarea ng-model="item.body" rows="4" cols="70">{{quote.body}}</textarea>
@@ -9,7 +9,7 @@
     <input ng-model="item.author.firstName" type="text" value="{{author.firstName}}">
     <label for="author">Last Name:</label>
     <input ng-model="item.author.lastName" type="text" value="{{author.lastName}}">
-  </fieldset>
+  <!-- </fieldset> -->
 
   <input type="submit" value="Update" class="add-margin form-button" ng-click="updateQuote(item)">
   <a href="/#" class="form-link">Cancel</a>

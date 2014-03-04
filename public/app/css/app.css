@@ -121,6 +121,15 @@ h3 {
   margin: 0 auto;
 }
 .center-edit-delete {
-  width: 150px;
+  width: 250px;
   margin: 0 auto;
+}
+.center-edit-delete > * {
+  display: inline-block;
+  width: 100px;
+  height: 37px;
+  margin: 0 auto;
+}
+.can {
+  /*margin-top: 20px;*/
 }

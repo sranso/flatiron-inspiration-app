@@ -6,8 +6,8 @@
   <p>by <a href="#/authors/{{author.id}}">{{author.lastName}}, {{author.firstName}}</a></p>
 </div>
 <div class="center-edit-delete">
-  <a href="#/quotes/edit/{{quote.id}}">Edit</a>
-  <button class="add-margin" ng-click="deleteForm()">Delete</button>
+  <a class="button postfix" href="#/quotes/edit/{{quote.id}}">Edit</a>
+  <a class="button postfix" ng-click="deleteForm()">Delete</a>
 </div>
 
 
@@ -15,8 +15,10 @@
   <form ng-submit="sendDelete()">
     <div class="form-wrapper">
       <p>Are you sure you want to delete this quote?</p>
-      <a href="#" ng-click="hideForm()">Cancel</a>
-      <button class="add-margin" type="submit">Yes</button>
+      <div class="center-edit-delete">
+        <a class="button postfix can" href="#" ng-click="hideForm()">Cancel</a>
+        <a class="button postfix" type="submit" ng-click="sendDelete()">Yes</a>
+      </div>
     </div>
   </form>
 </div>
